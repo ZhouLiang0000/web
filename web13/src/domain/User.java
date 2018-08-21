@@ -1,6 +1,9 @@
 package domain;
 
-public class User{
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class User implements Serializable{
 	private int uid;
 	private String uname;
 	private String upassword;
