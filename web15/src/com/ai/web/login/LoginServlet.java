@@ -13,7 +13,6 @@ import org.apache.commons.dbutils.handlers.BeanHandler;
 
 import com.ai.web.domian.User;
 import com.ai.web.utils.C3P0Utils;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 @SuppressWarnings("serial")
 public class LoginServlet extends HttpServlet {
