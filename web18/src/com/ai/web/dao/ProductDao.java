@@ -1,4 +1,4 @@
-package com.ai.web.web.dao;
+package com.ai.web.dao;
 
 import java.sql.SQLException;
 import java.util.List;

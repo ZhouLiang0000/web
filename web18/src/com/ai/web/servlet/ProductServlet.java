@@ -1,4 +1,4 @@
-package com.ai.web.web;
+package com.ai.web.servlet;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ai.web.domain.Product;
-import com.ai.web.web.service.ProductService;
+import com.ai.web.service.ProductService;
 
 @SuppressWarnings("serial")
 public class ProductServlet extends HttpServlet {

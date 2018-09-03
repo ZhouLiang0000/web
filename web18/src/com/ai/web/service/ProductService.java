@@ -1,9 +1,9 @@
-package com.ai.web.web.service;
+package com.ai.web.service;
 
 import java.util.List;
 
+import com.ai.web.dao.ProductDao;
 import com.ai.web.domain.Product;
-import com.ai.web.web.dao.ProductDao;
 
 public class ProductService {
 

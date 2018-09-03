@@ -13,7 +13,7 @@
     <description></description>
     <display-name>ProductServlet</display-name>
     <servlet-name>ProductServlet</servlet-name>
-    <servlet-class>com.ai.web.web.ProductServlet</servlet-class>
+    <servlet-class>com.ai.web.servlet.ProductServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ProductServlet</servlet-name>
