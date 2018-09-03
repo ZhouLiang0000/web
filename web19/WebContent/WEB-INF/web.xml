@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>TransferServlet</display-name>
+    <servlet-name>TransferServlet</servlet-name>
+    <servlet-class>com.ai.web.servlet.TransferServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TransferServlet</servlet-name>
+    <url-pattern>/transferServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
