@@ -11,13 +11,13 @@ public class DBUtilsDemo {
 	private static Connection conn = null;
 
 	public static void main(String[] args) {
-		conn = C3P0Utils.getConnection();
 		try {
+			conn = C3P0Utils.getConnection();
 			QueryRunner queryRunner = new QueryRunner();
 			String sql = "update account set money = 10000 where name = ?";
 			conn.setAutoCommit(false);
 			int row = queryRunner.update(conn, sql, "lucy");
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			try {
 				conn.rollback();
 			} catch (SQLException e1) {

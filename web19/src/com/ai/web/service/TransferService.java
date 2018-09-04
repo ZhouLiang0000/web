@@ -1,6 +1,5 @@
 package com.ai.web.service;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 
 import com.ai.web.dao.TransferDao;
@@ -11,29 +10,32 @@ public class TransferService {
 
 	public boolean transfer(String out, String in, double money) {
 		TransferDao dao = new TransferDao();
-		Connection conn = C3P0Utils.getConnection();
+//		Connection conn = null;
 		try {
-			//开启事务
-			conn.setAutoCommit(false);
+//			conn = C3P0Utils.getConnection();
+			// 开启事务
+//			conn.setAutoCommit(false);
+
+			C3P0Utils.startTransaction();
 			// 转出钱的方法
-			dao.out(out, money, conn);
-			//自杀代码，造成事务失败
-			int i = 1/0;
+			dao.out(out, money);
+			// 自杀代码，造成事务失败
+			int i = 1 / 0;
 			// 转入钱的方法
-			dao.in(in, money, conn);
-			
+			dao.in(in, money);
+
 		} catch (Exception e) {
 			isTransferSuccess = false;
 			try {
-				//回滚事务
-				conn.rollback();
+				// 回滚事务
+				C3P0Utils.rollbackTransaction();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
 			e.printStackTrace();
 		} finally {
 			try {
-				conn.commit();
+				C3P0Utils.commitTransaction();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
