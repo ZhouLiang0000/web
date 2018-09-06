@@ -29,6 +29,32 @@ font {
 	padding: 0 10px;
 }
 </style>
+<script type="text/javascript">
+	$(function() {
+		//为输入框绑定事件
+		$("#username").blur(function() {
+			//失去焦点获得输入框内容
+			var usernameInput = $(this).val();
+			/* alert(usernameInput); */
+			//使用ajax异步调用去服务端校验
+			$.post("${pageContext.request.contextPath}/checkUserName", {
+				"username" : usernameInput
+			}, function(data) {
+				var isExist = data.isExist;
+				//根据服务器返回的值动态的显示
+				var usernameInfo = "";
+				if (isExist) {
+					usernameInfo = "该用户名已经存在"
+					$("#usernameInfo").css("color", "red");
+				} else {
+					usernameInfo = "该用户名可以使用"
+					$("#usernameInfo").css("color", "green");
+				}
+				$("#usernameInfo").html(usernameInfo);
+			}, "json");
+		});
+	});
+</script>
 </head>
 <body>
 
@@ -47,7 +73,7 @@ font {
 						<label for="username" class="col-sm-2 control-label">用户名</label>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" id="username"
-								placeholder="请输入用户名">
+								placeholder="请输入用户名"> <span id="usernameInfo"></span>
 						</div>
 					</div>
 					<div class="form-group">

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	/* $(function() {
+		alert("jquery测试");
+	}); */
+	function fn1() {
+		//get异步访问
+		alert("get异步访问");
+		$.get("/web22/ajaxServlet2",//请求地址
+		{
+			"username" : "zhangsan",
+			"age" : 28
+		},//请求参数
+		function(data) {//回调函数
+			alert(data.name);
+		}, "json");
+	}
+	function fn2() {
+		//post异步访问
+		alert("post异步访问");
+		$.post("/web22/ajaxServlet2",//请求地址
+		{
+			"username" : "zhangsan",
+			"age" : 28
+		},//请求参数
+		function(data) {//回调函数
+			alert(data.name);
+		}, "json");
+	}
+	function fn3() {
+		$.ajax({
+			url : "/web22/ajaxServlet2",
+			async : true,
+			type : "POST",
+			data : {
+				"username" : "lucy",
+				"age" : 28
+			},
+			success : function(data) {
+				alert(data.name);
+			},
+			error : function() {
+				alert("请求失败");
+			},
+			dataType : "json"
+		});
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="get访问服务器" onclick="fn1()">
+	<span id="span1"></span>
+	<br>
+	<input type="button" value="post访问服务器" onclick="fn2()">
+	<span id="span2"></span>
+	<br>
+	<input type="button" value="ajax访问服务器" onclick="fn3()">
+	<span id="span2"></span>
+</body>
+</html>

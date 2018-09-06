@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function fn1() {
+		/* alert("点击了按钮") */
+		//创建ajax引擎
+		var xmlHttp = new XMLHttpRequest();
+		//绑定事件监听
+		xmlHttp.onreadystatechange = function() {
+			if (xmlHttp.readyState == 0) {
+				/* alert("请求初始化"); */
+			}
+			if (xmlHttp.readyState == 1) {
+				/* alert("服务器连接已建立"); */
+			}
+			if (xmlHttp.readyState == 2) {
+				/* alert("请求已接收"); */
+			}
+			if (xmlHttp.readyState == 3) {
+				/* alert("请求处理中"); */
+			}
+			if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+				//接收数据
+				var res = xmlHttp.responseText;
+				/* alert(res); */
+				document.getElementById("span1").innerHTML = res;
+			}
+		}
+		//绑定地址
+		xmlHttp.open("GET", "/web22/ajaxServlet", true);
+		//发送请求
+		xmlHttp.send();
+
+	}
+
+	function fn2() {
+		/* alert("点击了按钮") */
+		//创建ajax引擎
+		var xmlHttp = new XMLHttpRequest();
+		//绑定事件监听
+		xmlHttp.onreadystatechange = function() {
+			if (xmlHttp.readyState == 0) {
+				/* alert("请求初始化"); */
+			}
+			if (xmlHttp.readyState == 1) {
+				/* alert("服务器连接已建立"); */
+			}
+			if (xmlHttp.readyState == 2) {
+				/* alert("请求已接收"); */
+			}
+			if (xmlHttp.readyState == 3) {
+				/* alert("请求处理中"); */
+			}
+			if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+				//接收数据
+				var res = xmlHttp.responseText;
+				/* alert(res); */
+				document.getElementById("span2").innerHTML = res;
+			}
+		}
+		//绑定地址
+		xmlHttp.open("GET", "/web22/ajaxServlet", false);
+		//发送请求
+		xmlHttp.send();
+
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="异步访问服务器" onclick="fn1()">
+	<span id="span1"></span>
+	<br>
+	<input type="button" value="同步访问服务器" onclick="fn2()">
+	<span id="span2"></span>
+	<br>
+	<input type="button" value="测试按钮" onclick="alert()">
+</body>
+</html>
