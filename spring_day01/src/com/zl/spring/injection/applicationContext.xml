@@ -14,4 +14,16 @@
 		<property name="name" value="路虎"></property>
 		<property name="color" value="红色"></property>
 	</bean>
+	<!-- ===================================== -->
+	<!-- 构造函数方式注入 -->
+	<!-- name:构造函数的参数名 -->
+	<!-- index:构造函数参数的索引 -->
+	<!-- type:构造函数参数的类型 -->
+	<bean name="user2" class="com.zl.spring.bean.User">
+		<constructor-arg name="name" value="lucy" index="0"
+			type="java.lang.String"></constructor-arg>
+		<constructor-arg name="age" value="19"></constructor-arg>
+		<constructor-arg name="car" ref="car"></constructor-arg>
+	</bean>
+
 </beans>

@@ -5,6 +5,13 @@ public class User {
 	private Integer age;
 	private Car car;
 
+	public User(String name, Integer age, Car car) {
+		System.out.println("user 构造方法执行。。。。。。。。。");
+		this.name = name;
+		this.age = age;
+		this.car = car;
+	}
+
 	public Car getCar() {
 		return car;
 	}
