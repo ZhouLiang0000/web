@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd ">
+	<!-- 创建方式1：空参构造 -->
+	<bean name="user" class="com.zl.spring.bean.User"></bean>
+	<!-- 创建方式2：静态工厂创建 -->
+	<bean name="user2" class="com.zl.spring.create.UserFactory"
+		factory-method="createUser"></bean>
+	<!-- 创建方式3：实例工厂创建 -->
+	<bean name="user3" factory-bean="userFactory"
+		factory-method="createUser2"></bean>
+	<bean name="userFactory" class="com.zl.spring.create.UserFactory"></bean>
+</beans>
