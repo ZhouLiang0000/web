@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd ">
 	<!-- set方式注入： -->
 	<bean name="user" class="com.zl.spring.bean.User">
@@ -25,5 +26,59 @@
 		<constructor-arg name="age" value="19"></constructor-arg>
 		<constructor-arg name="car" ref="car"></constructor-arg>
 	</bean>
-
+	<!-- ===================================== -->
+	<!-- p名称空间方式注入 本质是set方式注入 1、导入p名称空间xmlns:p="http://www.springframework.org/schema/p" 
+		2、使用p：属性完成注入 1、属类型：p:属性值："值" 2、对象类型:p:属性名-ref:"bean名称" -->
+	<bean name="user3" class="com.zl.spring.bean.User" p:name="jack"
+		p:age="20" p:car-ref="car">
+	</bean>
+	<!-- ===================================== -->
+	<!-- SPEL表达式方式注入 -->
+	<bean name="user4" class="com.zl.spring.bean.User">
+		<property name="name" value="#{user.name}"></property>
+		<property name="age" value="#{user3.age}"></property>
+		<property name="car" ref="car"></property>
+	</bean>
+	<!-- ===================================== -->
+	<!-- 复杂类型注入 -->
+	<bean name="cb" class="com.zl.spring.injection.CollectionBean">
+		<!-- array数组注入 -->
+		<!-- 如果数组中只注入一个值(对象)，直接使用value或者ref即可 <property name="arr" value="tom"></property> -->
+		<!-- 数组中有多个值(对象)注入 -->
+		<property name="arr">
+			<array>
+				<value>tom</value>
+				<value>lucy</value>
+				<value>jack</value>
+				<ref bean="user4" />
+			</array>
+		</property>
+		<!-- list注入 -->
+		<!-- 如果数组中只注入一个值(对象)，直接使用value或者ref即可 <property name="list" value="mam"></property> -->
+		<!-- list中有多个值(对象)注入 -->
+		<property name="list">
+			<list>
+				<value>tom</value>
+				<value>lucy</value>
+				<value>jack</value>
+				<ref bean="user4" />
+			</list>
+		</property>
+		<!-- map注入 -->
+		<property name="map">
+			<map>
+				<entry key="xxx" value="yyy"></entry>
+				<entry key="car" value-ref="car"></entry>
+				<entry key-ref="user3" value-ref="user4"></entry>
+			</map>
+		</property>
+		<!-- properties注入 -->
+		<property name="prop">
+			<props>
+				<prop key="xxx">yyy</prop>
+				<prop key="username">root</prop>
+				<prop key="password">123321</prop>
+			</props>
+		</property>
+	</bean>
 </beans>
