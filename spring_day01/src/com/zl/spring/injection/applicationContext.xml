@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd ">
+	<!-- set方式注入： -->
+	<bean name="user" class="com.zl.spring.bean.User">
+		<!-- 值类型注入：为user对象里面的name属性赋值为tom -->
+		<property name="name" value="tom"></property>
+		<property name="age" value="18"></property>
+		<!-- 引用类型注入：为user对象里面的car属性赋值为car对象 -->
+		<property name="car" ref="car"></property>
+	</bean>
+	<bean name="car" class="com.zl.spring.bean.Car">
+		<property name="name" value="路虎"></property>
+		<property name="color" value="红色"></property>
+	</bean>
+</beans>

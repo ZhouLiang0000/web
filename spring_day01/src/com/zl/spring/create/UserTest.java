@@ -11,7 +11,7 @@ public class UserTest {
 	@Test
 	public void userTest() {
 		// 1、获取spring容器对象
-		ApplicationContext ac = new ClassPathXmlApplicationContext("com/zl/spring/create/applicationContext.xml");
+		ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
 		// 2、获取User对象
 		User user = (User) ac.getBean("user");
 		// 3、打印对象
@@ -26,7 +26,7 @@ public class UserTest {
 		// 2、获取静态工厂对象
 		User user = (User) ac.getBean("user2");
 		// 3、打印对象
-		System.out.println(user.toString());
+//		System.out.println(user.toString());
 	}
 
 	// 动态工厂方式创建
@@ -37,6 +37,6 @@ public class UserTest {
 		// 2、获取静态工厂对象
 		User user = (User) ac.getBean("user3");
 		// 3、打印对象
-		System.out.println(user.toString());
+//		System.out.println(user.toString());
 	}
 }

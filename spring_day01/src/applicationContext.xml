@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd ">
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd ">
 	<!-- 将User对象交给spring管理 -->
 	<bean name="user" class="com.zl.spring.bean.User"></bean>
+	<!-- 模块化配置导入其他配置文件 -->
+	<import resource="com/zl/spring/create/applicationContext.xml" />
+	<import
+		resource="com/zl/spring/injection/applicationContext.xml" />
 </beans>
