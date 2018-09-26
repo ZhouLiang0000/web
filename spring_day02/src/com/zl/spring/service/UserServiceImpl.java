@@ -1,5 +1,8 @@
 package com.zl.spring.service;
 
+import org.springframework.stereotype.Component;
+
+@Component("userService")
 public class UserServiceImpl implements UserService {
 
 	@Override
